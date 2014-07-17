@@ -1,0 +1,73 @@
+{
+	"name": "Blind Auditions",
+	"children": [
+	{
+		"name": "Team Kylie",
+		"children": [
+			{"name": "Jamie Johnson"},
+			{"name": "Lee Glasson"},
+			{"name": "Rachael O'Connor"},
+			{"name": "Jai"},
+			{"name": "Jade Mayjean Peters"},
+			{"name": "Gemyni"},
+			{"name": "Amelia O'Connell"},
+			{"name": "Femi Santigo"},
+			{"name": "Jimmy Weston"},
+			{"name": "Joe Keegan"},
+			{"name": "Leo Ihenacho"}
+		]
+	},
+	{
+		"name": "Team Ricky",
+		"children": [
+			{"name": "Christina Marie"},
+			{"name": "Chris Royal"},
+			{"name": "Emily Adams"},
+			{"name": "Max Murphy"},
+			{"name": "Jazz Bates Chambers"},
+			{"name": "Beth McCarthy"},
+			{"name": "Jessica Steele"},
+			{"name": "Jamie Lovatt"},
+			{"name": "Kelsey-Beth"},
+			{"name": "Luciee Marie Closier"},
+			{"name": "Myles Evans"},
+			{"name": "Nathan Amzi"},
+			{"name": "Tila & Tavelah"}
+		]
+	},
+	{
+		"name": "Team Tom",
+		"children": [
+			{"name": "Sally Barker"},
+			{"name": "Bizzi Dixon"},
+			{"name": "Georgia"},
+			{"name": "Melissa"},
+			{"name": "Celestine"},
+			{"name": "Leverne Scott-Roberts"},
+			{"name": "Elesha Paul Moses"},
+			{"name": "Garry Poole"},
+			{"name": "Kenny Thompson"},
+			{"name": "Mairead Conlon"},
+			{"name": "Steven Alexander"},
+			{"name": "Talia Smith"},
+			{"name": "Vicky Jones"}
+		]
+	},
+	{
+		"name": "Team Will",
+		"children": [
+			{"name": "Jermain Jackman"},
+			{"name": "Shophie May"},
+			{"name": "Ieshe Haughton"},
+			{"name": "Kiki de Ville"},
+			{"name": "Cherri Prince"},
+			{"name": "Sarah Eden-Winn"},
+			{"name": "Anna McLuckie"},
+			{"name": "Callum Crowley"},
+			{"name": "James Byron"},
+			{"name": "Nomakhosi"},
+			{"name": "Tom Barnwell"}
+		]
+	}
+	]
+}

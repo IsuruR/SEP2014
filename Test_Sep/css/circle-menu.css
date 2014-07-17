@@ -1,0 +1,343 @@
+﻿
+.menu li:first-child {
+    background:#f00;
+    font-weight:bold;
+    font-family:arial black;
+    font-size:200%; 
+    background-image:url('../images/Leaders/p01nmhb4.jpg');
+    background-size:cover;
+    border-color: #fff;
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 2px 1px #aaa;
+
+}
+
+
+.menu li {
+    background:#000;
+    color:#fff;
+    font-size:25px;
+}
+.menu a{
+    text-decoration: none;
+    color:#fff;
+}
+
+.menu2 li:first-child {
+    background:#f00;
+    font-weight:bold;
+    font-family:arial black;
+    font-size:200%; 
+    background-image:url('../images/Leaders/p01nmgy3.jpg');
+    background-size:cover;
+    border-color: #fff;
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 2px 1px #aaa;
+
+}
+
+
+.menu2 li {
+    background:#000;
+    color:#fff;
+    font-size:25px;
+}
+.menu2 a{
+    text-decoration: none;
+    color:#fff;
+}
+
+
+.menu3 li:first-child {
+    background:#f00;
+    font-weight:bold;
+    font-family:arial black;
+    font-size:200%; 
+    background-image:url('../images/Leaders/p01nn2w4.jpg');
+    background-size:cover;
+    border-color: #fff;
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 2px 1px #aaa;
+
+}
+
+
+.menu3 li {
+    background:#000;
+    color:#fff;
+    font-size:25px;
+}
+.menu3 a{
+    text-decoration: none;
+    color:#fff;
+}
+
+.menu4 li:first-child {
+    background:#f00;
+    font-weight:bold;
+    font-family:arial black;
+    font-size:200%; 
+    background-image:url('../images/Leaders/p01nn1f7.jpg');
+    background-size:cover;
+    border-color: #fff;
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 2px 1px #aaa;
+
+}
+
+
+.menu4 li {
+    background:#000;
+    color:#fff;
+    font-size:25px;
+}
+.menu4 a{
+    text-decoration: none;
+    color:#fff;
+}
+#menu16 {
+    -webkit-transform-origin: 17px 17px;
+    -moz-transform-origin: 17px 17px;
+    -o-transform-origin: 17px 17px;
+    transform-origin: 17px 17px;
+
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+#menu16.circleMenu-open {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+#menu16.circleMenu-open > li:first-child {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+:not(#menu16).circleMenu-open > li:first-child {
+    -webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    transform: rotate(315deg);
+}
+
+nav{
+    width:200px;
+    float:left;
+}
+nav ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+nav a{
+    display:block;
+    text-decoration:none;
+}
+nav a.active{
+    background:blue;
+    color:#fff;
+}
+#examples {
+    margin-left:30px;
+}
+
+#div1 {
+    margin-left:100px;
+}
+
+#examples> div {
+    display:none;
+    width:300px;
+    height:300px;
+    border:1px solid black;
+    position:relative;
+    overflow:hidden;
+}
+
+.menu{position:absolute;}
+.menu2{position:absolute;}
+.menu3{position:absolute;}
+.menu4{position:absolute;}
+
+#menu14, #menu15, #menu16{
+    left:440px;
+    top:135px;
+  
+
+}
+
+#menu18{
+    right:135px;
+    bottom:200px;
+
+}
+
+#menu5,#menu17{
+    bottom:200px;
+    left:135px;
+}
+#menu6, #menu10{
+    top:0;
+    left:135px;
+}
+#menu7, #menu11{
+    top:135px;
+    left:0;
+}
+#menu8, #menu12{
+    bottom:34px;
+    left:135px;
+}
+#menu19, #menu13{
+    top:135px;
+    right:440px;
+}
+/*--team kylie-----------------------------------------*/
+li.m1L1 {
+    background-image:url('../Contestants/Kylie/Amelia.jpg');
+    background-size:cover;
+}
+li.m1L2 {
+        background-image:url('../Contestants/Kylie/Femi.jpg');
+    background-size:cover;
+}
+li.m1L3 {
+        background-image:url('../Contestants/Kylie/Gemini.jpg');
+    background-size:cover;
+}
+li.m1L4 {
+        background-image:url('../Contestants/Kylie/Jade.jpg');
+    background-size:cover;
+}
+li.m1L5 {
+        background-image:url('../Contestants/Kylie/Jai.jpg');
+    background-size:cover;
+}
+li.m1L6 {
+        background-image:url('../Contestants/Kylie/Jamie.jpg');
+    background-size:cover;
+}
+li.m1L7 {
+        background-image:url('../Contestants/Kylie/Jimmy.jpg');
+    background-size:cover;
+}
+li.m1L8 {
+        background-image:url('../Contestants/Kylie/Joe.jpg');
+    background-size:cover;
+}
+/*----------Team will--------------*/
+li.m2L1 {
+    background-image:url('../Contestants/Will/Anna.jpg');
+    background-size:cover;
+}
+li.m2L2 {
+        background-image:url('../Contestants/Will/Callum.jpg');
+    background-size:cover;
+}
+li.m2L3 {
+        background-image:url('../Contestants/Will/Cherri.jpg');
+    background-size:cover;
+}
+li.m2L4 {
+        background-image:url('../Contestants/Will/Iesher.jpg');
+    background-size:cover;
+}
+li.m2L5 {
+        background-image:url('../Contestants/Will/James.jpg');
+    background-size:cover;
+}
+li.m2L6 {
+        background-image:url('../Contestants/Will/Jermain.jpg');
+    background-size:cover;
+}
+li.m2L7 {
+        background-image:url('../Contestants/Will/Kiki.jpg');
+    background-size:cover;
+}
+li.m2L8 {
+        background-image:url('../Contestants/Will/Nomakhosi.jpg');
+    background-size:cover;
+}
+/*-----Team Ricky-----------*/
+
+li.m3L1 {
+    background-image:url('../Contestants/Ricky/Beth.jpg');
+    background-size:cover;
+}
+li.m3L2 {
+        background-image:url('../Contestants/Ricky/Chris.jpg');
+    background-size:cover;
+}
+li.m3L3 {
+        background-image:url('../Contestants/Ricky/Christina.jpg');
+    background-size:cover;
+}
+li.m3L4 {
+        background-image:url('../Contestants/Ricky/Emily.jpg');
+    background-size:cover;
+}
+li.m3L5 {
+        background-image:url('../Contestants/Ricky/Jamie.jpg');
+    background-size:cover;
+}
+li.m3L6 {
+        background-image:url('../Contestants/Ricky/Jazz.jpg');
+    background-size:cover;
+}
+li.m3L7 {
+        background-image:url('../Contestants/Ricky/Jessica.jpg');
+    background-size:cover;
+}
+li.m3L8 {
+        background-image:url('../Contestants/Ricky/Kelsey.jpg');
+    background-size:cover;
+}
+
+/*------Team Tom------------------*/
+
+li.m4L1 {
+    background-image:url('../Contestants/Tom/Bizzi.jpg');
+    background-size:cover;
+}
+li.m4L2 {
+        background-image:url('../Contestants/Tom/Celestine.jpg');
+    background-size:cover;
+}
+li.m4L3 {
+        background-image:url('../Contestants/Tom/Elesha.jpg');
+    background-size:cover;
+}
+li.m4L4 {
+        background-image:url('../Contestants/Tom/Gary.jpg');
+    background-size:cover;
+}
+li.m4L5 {
+        background-image:url('../Contestants/Tom/Georgia.jpg');
+    background-size:cover;
+}
+li.m4L6 {
+        background-image:url('../Contestants/Tom/Kenny.jpg');
+    background-size:cover;
+}
+li.m4L7 {
+        background-image:url('../Contestants/Tom/Leverne.jpg');
+    background-size:cover;
+}
+li.m4L8 {
+        background-image:url('../Contestants/Tom/Mairead.jpg');
+    background-size:cover;
+}

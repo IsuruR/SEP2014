@@ -1,0 +1,78 @@
+{
+	"name": "Blind Auditions",
+	"value": "100",
+	"children": [
+	{
+		"name": "Team Kylie",
+		"value": "75",
+		"children": [
+			{"name": "Jamie Johnson", "value": "25"},
+			{"name": "Lee Glasson", "value": "25"},
+			{"name": "Rachael O'Connor", "value": "25"},
+			{"name": "Jai", "value": "25"},
+			{"name": "Jade Mayjean Peters", "value": "25"},
+			{"name": "Gemyni", "value": "25"},
+			{"name": "Amelia O'Connell", "value": "25"},
+			{"name": "Femi Santigo", "value": "25"},
+			{"name": "Jimmy Weston", "value": "25"},
+			{"name": "Joe Keegan", "value": "25"},
+			{"name": "Leo Ihenacho", "value": "25"}
+		]
+	},
+	{
+		"name": "Team Ricky",
+		"value": "75",
+		"children": [
+			{"name": "Christina Marie", "value": "25"},
+			{"name": "Chris Royal", "value": "25"},
+			{"name": "Emily Adams", "value": "25"},
+			{"name": "Max Murphy", "value": "25"},
+			{"name": "Jazz Bates Chambers", "value": "25"},
+			{"name": "Beth McCarthy", "value": "25"},
+			{"name": "Jessica Steele", "value": "25"},
+			{"name": "Jamie Lovatt", "value": "25"},
+			{"name": "Kelsey-Beth", "value": "25"},
+			{"name": "Luciee Marie Closier", "value": "25"},
+			{"name": "Myles Evans", "value": "25"},
+			{"name": "Nathan Amzi", "value": "25"},
+			{"name": "Tila & Tavelah", "value": "25"}
+		]
+	},
+	{
+		"name": "Team Tom",
+		"value": "75",
+		"children": [
+			{"name": "Sally Barker", "value": "25"},
+			{"name": "Bizzi Dixon", "value": "25"},
+			{"name": "Georgia", "value": "25"},
+			{"name": "Melissa", "value": "25"},
+			{"name": "Celestine", "value": "25"},
+			{"name": "Leverne Scott-Roberts", "value": "25"},
+			{"name": "Elesha Paul Moses", "value": "25"},
+			{"name": "Garry Poole", "value": "25"},
+			{"name": "Kenny Thompson", "value": "25"},
+			{"name": "Mairead Conlon", "value": "25"},
+			{"name": "Steven Alexander", "value": "25"},
+			{"name": "Talia Smith", "value": "25"},
+			{"name": "Vicky Jones", "value": "25"}
+		]
+	},
+	{
+		"name": "Team Will",
+		"value": "75",
+		"children": [
+			{"name": "Jermain Jackman", "value": "25"},
+			{"name": "Shophie May", "value": "25"},
+			{"name": "Ieshe Haughton", "value": "25"},
+			{"name": "Kiki de Ville", "value": "25"},
+			{"name": "Cherri Prince", "value": "25"},
+			{"name": "Sarah Eden-Winn", "value": "25"},
+			{"name": "Anna McLuckie", "value": "25"},
+			{"name": "Callum Crowley", "value": "25"},
+			{"name": "James Byron", "value": "25"},
+			{"name": "Nomakhosi", "value": "25"},
+			{"name": "Tom Barnwell", "value": "25"}
+		]
+	}
+	]
+}

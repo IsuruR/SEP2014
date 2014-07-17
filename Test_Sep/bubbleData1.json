@@ -1,0 +1,17 @@
+{
+	"name": "Team Kylie",
+	"value": "100",
+	"children": [
+		{"name": "Jamie Johnson", "value": "155"},
+		{"name": "Lee Glasson", "value": "115"},
+		{"name": "Rachael O'Connor", "value": "152"},
+		{"name": "Jai", "value": "36"},
+		{"name": "Jade Mayjean Peters", "value": "92"},
+		{"name": "Gemyni", "value": "3"},
+		{"name": "Amelia O'Connell", "value": "34"},
+		{"name": "Femi Santigo", "value": "71"},
+		{"name": "Jimmy Weston", "value": "11"},
+		{"name": "Joe Keegan", "value": "30"},
+		{"name": "Leo Ihenacho", "value": "163"}
+	]
+}

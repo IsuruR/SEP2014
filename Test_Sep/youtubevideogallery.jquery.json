@@ -1,0 +1,28 @@
+{
+	"name": "youtubevideogallery",
+	"version": "1.3.0",
+	"title": "Youtube video gallery",
+    "description": "A simple video gallery for youtube, converts a list of Youtube links into a gallery, can load a search, user or playlist from Youtube API. Optional, use the fancybox or colorbox plugins to display videos nicely",
+	"author": {
+		"name": "Patrick Clancey",
+        "email": "clanceyp@gmail.com",
+        "url": "https://www.pclancey.com"
+	},
+	"licenses": [
+		{
+			"type": "Apache License 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.9"
+	},
+	"keywords": [
+		"lightbox",
+		"youtube",
+		"gallery"
+	],
+	"docs": "http://clanceyp.github.io/youtube-video-gallery/docs.html",
+    "demo": "http://clanceyp.github.io/youtube-video-gallery/demo.html",
+    "homepage": "http://clanceyp.github.io/youtube-video-gallery/"
+}

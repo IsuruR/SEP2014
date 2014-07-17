@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="Youtube video gallery plugin for jquery >= 1.9" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../jquery.youtubevideogallery.js"></script>
+    <link rel="stylesheet" href="../youtube-video-gallery.css" type="text/css"/>
+    <link rel="stylesheet" href="../test/test.css" type="text/css"/>
+    <!--[if lt IE 9]>
+    <link href="../youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <title>Youtube video gallery for jquery</title>
+</head>
+<body>
+<h1>Default display</h1>
+<div id="test">
+    <h2>Video gallery - from hardcoded HTML UL</h2>
+    <p>Uses it's own built in basic lightbox display</p>
+    <pre>$(document).ready(function(){
+    $("ul.youtube-videogallery").youtubeVideoGallery(  );
+});</pre>
+    <ul class="youtube-videogallery">
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=CjgT8Af1kGc">Bad scooting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=4psVnsYlBok">Good scooting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=05Cgtg_N4eI">Knitting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=xPr4g7o46DY">Sunrise yoga</a></li>
+        <li><a href="http://www.youtube.com/watch?v=pocEg6a6ZpM">YUI Roundtable</a></li>
+        <li><a href="http://www.youtube.com/watch?v=ishBOmjHoXE">Sporting moments</a></li>
+        <li><a href="http://www.youtube.com/watch?v=j_OyHUqIIOU">Big red balloon</a></li>
+        <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
+    </ul>
+
+    <h2>Display compact</h2>
+        <pre>$(document).ready(function(){
+    $("ul.youtube-videogallery").youtubeVideoGallery( {style:'compact',title:'none'} );
+});</pre>
+    <div style="background-color: #000; padding: 8px;border-radius: 8px;height: 230px;width:450px">
+    <ul class="youtube-videogallery-compact">
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+    </ul>
+    </div>
+
+    <h2>Video gallery - from API</h2>
+    <p>Import a group of videos from youtube API, set fallback URL for accessibility, SEO etc...</p>
+    <pre>$(document).ready(function(){
+    $("ul.youtube-videogallery2").youtubeVideoGallery( {
+        apiFallbackUrl: 'https://www.youtube.com/results?search_query=dance+tango',
+        apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=10&v=2'
+     });
+});</pre>
+    <h3>search</h3>
+    <ul class="youtube-videogallery-search">
+        <li><a href="http://youtube.com">Youtube</a></li>
+    </ul>
+    <h3>user</h3>
+    <ul class="youtube-videogallery-user">
+        <li><a href="http://youtube.com">Youtube</a></li>
+    </ul>
+    <h3>playlist</h3>
+    <ul class="youtube-videogallery-playlist">
+        <li><a href="http://youtube.com">Youtube</a></li>
+    </ul>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("ul.youtube-videogallery").youtubeVideoGallery( {assetFolder:'../'} );
+
+        $("ul.youtube-videogallery-compact").youtubeVideoGallery( {
+                assetFolder:'../',
+                style:'compact',
+                title:'none'
+            }
+        );
+
+        $("ul.youtube-videogallery-search").youtubeVideoGallery({
+            apiFallbackUrl: 'https://www.youtube.com/results?search_query=football+soccer',
+            apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=football+-soccer&orderby=published&start-index=1&alt=json&max-results=6&v=2',
+            assetFolder:'../'
+        });
+        $("ul.youtube-videogallery-user").youtubeVideoGallery({
+            apiFallbackUrl: 'http://www.youtube.com/user/mayarcade',
+            apiUrl:'http://gdata.youtube.com/feeds/api/users/mayarcade/uploads?v=2&alt=jsonc&max-results=6',
+            assetFolder:'../'
+        });
+        $("ul.youtube-videogallery-playlist").youtubeVideoGallery({
+            apiFallbackUrl: 'http://www.youtube.com/playlist?list=PLdLRpN7S7Ubw-OQI7MS04NuYpXHadH6xc',
+            apiUrl:'http://gdata.youtube.com/feeds/api/playlists/PLdLRpN7S7Ubw-OQI7MS04NuYpXHadH6xc?alt=json&start-index=1&max-results=6&v=2',
+            assetFolder:'../'
+        });
+    });
+</script>
+</body>
+</html>

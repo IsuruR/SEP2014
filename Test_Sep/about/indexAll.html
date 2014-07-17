@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="Youtube video gallery plugin for jquery >= 1.9" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../jquery.youtubevideogallery.js"></script>
+    <link rel="stylesheet" href="../youtube-video-gallery.css" type="text/css"/>
+    <link rel="stylesheet" href="../test/test.css" type="text/css"/>
+    <!--[if lt IE 9]>
+    <link href="../youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <title>Youtube video gallery for jquery</title>
+
+    <!-- add colorbox -->
+    <link rel="stylesheet" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css" />
+    <script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
+</head>
+<body>
+    
+<div id="test">
+    
+   <h1 id="title" style="color:white"> 
+   
+    </h1>
+    <br />
+    <br />
+      <ul class="youtube-videogallery-search">
+        <li><a href="http://youtube.com">Youtube</a></li>
+    </ul>
+</div>
+
+<script>
+    //$(document).ready(function(){
+    //    $("ul.youtube-videogallery").youtubeVideoGallery( {plugin:'colorbox',assetFolder:'../'} );
+    //});
+
+
+
+   
+
+    $("ul.youtube-videogallery-search").youtubeVideoGallery({
+        apiFallbackUrl: 'http://www.youtube.com/results?q=BBC+The+Voice+UK+2014',
+        apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=BBC+The+Voice+UK+2014&orderby=published&start-index=1&alt=json&max-results=28&v=2',
+        assetFolder: '../'
+    });
+
+ 
+</script>
+</body>
+</html>

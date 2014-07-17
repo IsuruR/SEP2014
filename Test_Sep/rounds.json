@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Blind Auditions",
+    "participants": 60,
+    "eliminations": 12
+  },
+  {
+    "id": 2,
+    "name": "Battle Rounds",
+    "participants": 48,
+    "eliminations": 12
+  },
+  {
+    "id": 3,
+    "name": "Knockouts",
+    "participants": 36,
+    "eliminations": 12
+  },
+  {
+    "id": 4,
+    "name": "Quarter Finals",
+    "participants": 24,
+    "eliminations": 12
+  },
+  {
+    "id": 5,
+    "name": "Semi Finals",
+    "participants": 12,
+    "eliminations": 8
+  },
+  {
+    "id": 6,
+    "name": "Finals",
+    "participants": 4,
+    "eliminations": 3
+  }
+]

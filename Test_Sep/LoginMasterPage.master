@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="LoginMasterPage.master.cs" Inherits="LoginMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+           <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="nabar navbar-inverse navbar-fixed-top">
+            <div class="navbar">
+                <div class="navbar-inner">
+                     <div class="container-fluid">
+                         <span class="brand">The Voice UK</span>
+
+                          <div class="nav-collapse collapse">
+                            <ul class="nav navbar-nav pull-right" >
+                           <li><a href="#">Login</a></li>
+		                   <li><a>||</a></li>
+		                       <li><a href="#">Singin</a></li></ul>
+                             </div>
+                     </div>
+                   
+                </div>
+            </div>
+        </div>
+    <div>
+          <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    <footer align="center">
+    <p>Copyright &copy; 2014 <strong>BBC One</strong></p>
+</footer>
+</body>
+
+</html>

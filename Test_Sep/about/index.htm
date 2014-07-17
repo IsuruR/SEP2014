@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title></title>
+    <link href="../css/circle-menu.css" rel="stylesheet" />
+   
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="../jQuery.circleMenu.js"></script>
+    <script>
+        $(function () {
+            $('#menu').circleMenu({
+                direction: 'bottom-right',
+                open: function () { console.log('menu opened'); },
+                close: function () { console.log('menu closed'); },
+                init: function () { console.log('menu initialized'); }
+            });
+            $('#menu2').circleMenu({
+                direction: 'bottom-right',
+                open: function () { console.log('menu opened'); },
+                close: function () { console.log('menu closed'); },
+                init: function () { console.log('menu initialized'); }
+            });
+            $('#menu3').circleMenu({
+                direction: 'bottom-right',
+                open: function () { console.log('menu opened'); },
+                close: function () { console.log('menu closed'); },
+                init: function () { console.log('menu initialized'); }
+            });
+            $('#menu4').circleMenu({
+                direction: 'bottom-right',
+                open: function () { console.log('menu opened'); },
+                close: function () { console.log('menu closed'); },
+                init: function () { console.log('menu initialized'); }
+            });
+            $('#menu5').circleMenu({ direction: 'top-right' });
+            $('#menu18').circleMenu({ direction: 'full', trigger: 'hover', step_in: 300, step_out: 300 });
+            $('#menu19').circleMenu({ direction: 'full', trigger: 'hover', step_in: 300, step_out: 300 });
+
+            $('#menu10').circleMenu({ direction: 'bottom-half' });
+            $('#menu12').circleMenu({ direction: 'right-half' });
+            $('#menu11').circleMenu({ direction: 'top-half' });
+            $('#menu13').circleMenu({ direction: 'left-half' });
+            $('#menu14').circleMenu({ direction: 'full', trigger: 'hover', step_in: 300, step_out: 300 });
+            $('#menu17').circleMenu({ direction: 'full', trigger: 'hover', step_in: 300, step_out: 300 });
+            $('#menu15').circleMenu({ direction: 'full', trigger: 'click', step_in: -300, step_out: -300 });
+            $('#menu16').circleMenu({
+                direction: 'full',
+                step_in: 0,
+                step_out: 0
+            });
+
+            $('a').on('click', function (evt) { if ($(this).attr('href') === '#') { evt.preventDefault(); } });
+
+            $('#examples > div:first-child').css('display', 'block');
+            $('nav li:first-child a').addClass('active');
+            $('nav a').each(function () {
+                var $link = $(this);
+                $link.on('click', function (evt) {
+                    $('nav a').removeClass('active');
+                    $('#examples > div').css('display', 'none');
+                    $('#' + $link.attr('rel')).css('display', 'block');
+                    $link.addClass('active');
+                });
+            })
+        });
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-27581645-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+
+    <div >
+     <div style="background-image:url(Untitled.jpg);background-size:cover">
+            
+                <ul class="menu" id="menu17">
+                        <li title="Team Kylie"><a href="#"></a></li>
+                        <li class="m1L1" id="Amelia+OConnell" title="Amelia O'Connell"><a href="#" alt="Item 1" title="Item 1"></a></li>
+                        <li class="m1L2" id="Femi+Santiago" title="Femi Santiago"><a href="#" alt="Item 2" title="Item 2"></a></li>
+                        <li class="m1L3" id="Gemyni" title="Gemyni"><a href="#" alt="Item 3" title="Item 3"></a></li>
+                        <li class="m1L4" id="Jade+Mayjean+Peters" title="Jade Mayjean Peters"><a href="#" alt="Item 4" title="Item 4"></a></li>
+                        <li class="m1L5" id="Jai" title="Jai"><a href="#" alt="Item 5" title="Item 5"></a></li>
+                        <li class="m1L6" id="Jamie+Johnson" title="Jamie Johnson"><a href="#" alt="Item 6" title="Item 6"></a></li>
+                        <li class="m1L7" id="Jimmy+Weston" title="Jimmy Weston"><a href="#" alt="Item 7" title="Item 7"></a></li>
+                        <li class="m1L8" id="Joe+Keegan" title="Joe Keegan"><a href="#" alt="Item 8" title="Item 8"></a></li>
+                    </ul>
+            <ul class="menu2" id="menu18">
+                        <li title="Team Will"><a href="#"></a></li>
+                        <li class="m2L1" id="Anna+Mcluckie" title="Anna McLuckie"><a href="#" alt="Item 1" title="Item 1"></a></li>
+                        <li class="m2L2" id="Callum+Crowley" title="Callum Crowley"><a href="#" alt="Item 2" title="Item 2"></a></li>
+                        <li class="m2L3" id="Cherri+Prince" title="Cherri Prince"><a href="#" alt="Item 3" title="Item 3"></a></li>
+                        <li class="m2L4" id="Iesher+Haughton" title="Iesher Haughton"><a href="#" alt="Item 4" title="Item 4"></a></li>
+                        <li class="m2L5" id="James+Byron" title="James Byron"><a href="../storyPage2.aspx" alt="Item 5" title="Item 5"></a></li>
+                        <li class="m2L6" id="Jermain+Jackman" title="Jermain Jackman"><a href="#" alt="Item 6" title="Item 6"></a></li>
+                        <li class="m2L7" id="Kiki+De+Ville" title="Kiki De Ville"><a href="#" alt="Item 7" title="Item 7"></a></li>
+                        <li class="m2L8" id="Nomakhosi" title="Nomakhosi"><a href="#" alt="Item 8" title="Item 8"></a></li>
+                    </ul>
+            <ul class="menu3" id="menu19">
+                        <li title="Team Ricky"><a href="#"></a></li>
+                        <li class="m3L1" id="Beth+Mccarthy" title="Beth McCarthy"><a href="#" alt="Item 1" title="Item 1"></a></li>
+                        <li class="m3L2" id="Chris+Royal" title="Chris Royal"><a href="#" alt="Item 2" title="Item 2"></a></li>
+                        <li class="m3L3" id="Christina+Marie" title="Christina Marie"><a href="#" alt="Item 3" title="Item 3"></a></li>
+                        <li class="m3L4" id="Emily+Adams" title="Emily Adams"><a href="#" alt="Item 4" title="Item 4"></a></li>
+                        <li class="m3L5" id="Jamie+Lovatt" title="Jamie Lovatt"><a href="#" alt="Item 5" title="Item 5"></a></li>
+                        <li class="m3L6" id="Jazz+Bates+Chambers" title="Jazz Bates Chameers"><a href="#" alt="Item 6" title="Item 6"></a></li>
+                        <li class="m3L7" id="Jessica+Steele" title="Jessica Steele"><a href="#" alt="Item 7" title="Item 7"></a></li>
+                        <li class="m3L8" id="Kelsey+Beth" title="Kelsey Beth"><a href="#" alt="Item 8" title="Item 8"></a></li>
+                    </ul>
+                <ul class="menu4" id="menu14">
+                    <li title="Team Tom"><a href="#"></a></li>
+                    <li class="m4L1" id="Bizzi+Dixon" title="Bizzi Dixon"><a href="#" alt="Item 1" title="Item 1"></a></li>
+                    <li class="m4L2" id="Celestine" title="Celestin"><a href="#" alt="Item 2" title="Item 2"></a></li>
+                    <li class="m4L3" id="Elesha+Paul+Moses" title="Elesha Pul Moses"><a href="#" alt="Item 3" title="Item 3"></a></li>
+                    <li class="m4L4" id="Gary+Poole" title="Gary Poole"><a href="#" alt="Item 4" title="Item 4"></a></li>
+                    <li class="m4L5" id="Georgia" title="Georgia"><a href="#" alt="Item 5" title="Item 5"></a></li>
+                    <li class="m4L6" id="Kenny+Thompson" title="Kenny Thompson"><a href="#" alt="Item 6" title="Item 6"></a></li>
+                    <li class="m4L7" id="Leverne+Scott+Roberts" title="Leverne Scott Roberts"><a href="#" alt="Item 7" title="Item 7"></a></li>
+                    <li class="m4L8" id="Mairead+Conlon" title="Mairead Conlon"><a href="#" alt="Item 8" title="Item 8"></a></li>
+                </ul>
+        </div>
+    </div>
+ 
+</body>
+</html>
