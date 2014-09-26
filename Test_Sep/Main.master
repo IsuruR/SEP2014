@@ -36,17 +36,17 @@
                 <div class="nav-collapse collapse">
 
                       <ul class="nav">
-                         <li class="active"><a href="storyPage1.aspx"><i class="icon-home icon-black"></i>Home</a></li>
-                        <li ><a href="Dashboard.aspx"><i class="icon-hdd icon-black"></i>Dashboard</a></li>
-
+                        <%-- <li class="active"><a href="storyPage1.aspx"><i class="icon-home icon-black"></i>Home</a></li>--%>
+                        <li ><a href="MainDashboard.aspx"><i class="icon-hdd icon-black"></i>Dashboard</a></li>
+                           <li ><a href="socialMediaRating.aspx"><i class="icon-hdd icon-black"></i>Social Media Rating</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                class="icon-edit icon-black"></i>
                                 Candidates <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Candidates.aspx">View All Candidates</a></li>
-                                <li><a href="AddCandidates.aspx">Add Candidates</a></li>
-                                <li><a href="EditCandidate.aspx">Edit</a></li>
+                                <li id="addCand" runat="server" visible="false"><a href="AddCandidates.aspx">Add Candidates</a></li>
+                                <li id="editCand" runat="server" visible="false"><a href="EditCandidate.aspx">Edit</a></li>
                             </ul>
                         </li>
                         
@@ -62,6 +62,7 @@
                                 <li><a href="knockoutSummary.aspx">Knockout Rounds</a></li>
                                 <li><a href="FinalsSummary.aspx">Final Rounds</a></li>
                                 <li><a href="storyPage2.aspx">Live Shows</a></li>
+                                <li><a href="Dashboard.aspx">D3 Charts</a></li>
                             </ul>
                         </li>
 
@@ -78,9 +79,12 @@
                     </ul>
 
                     <ul class="nav pull-right settings">
-                        <li><a href="#" class="tip icon logout" data-original-title="Settings"
-                               data-placement="bottom"><i class="icon-large icon-cog"></i></a></li>
+                        <li id="settings" runat="server" visible="false"><a href="AddNewUser.aspx" class="tip icon logout" data-original-title="Settings"
+                               data-placement="bottom"><i class="icon-large icon-cog">
+              
+                                                       </i></a></li>
                         <li class="divider-vertical"></li>
+                         <li><a>||</a></li>
                         <li><a href="Login.aspx" class="tip icon logout" data-original-title="Logout" data-placement="bottom"><i
                            class="icon-large icon-off"></i></a></li>
                     </ul>
@@ -97,14 +101,14 @@
                         <li class="divider-vertical"></li>
                     </ul>
 
-                    <div class="pull-right">
+                    <%--<div class="pull-right">
                         <form class="form-search form-inline" style="margin:5px 0 0 0;" method="post">
                             <div class="input-append">
                                 <input type="text" name="keyword" class="span2 search-query" placeholder="Search">
                                 <button type="submit" class="btn"><i class="icon-search"></i></button>
                             </div>
                         </form>
-                    </div>
+                    </div>--%>
 
                 </div>
                 <!--/.nav-collapse -->
@@ -138,7 +142,7 @@
 
 <hr>
 
-<footer align="center">
+<footer align="center" class="nabar  navbar-fixed-bottom">
     <p>Copyright &copy; 2014 <strong>BBC One</strong></p>
 </footer>
 

@@ -9,6 +9,12 @@ public partial class Main : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        lblWelcome.Text = "Welcome "+ Session["uname"].ToString();
+        if (Session["uname"].ToString() == "admin1")
+        {
+            settings.Visible = true;
+            addCand.Visible = true;
+            editCand.Visible = true;
+        }
     }
 }

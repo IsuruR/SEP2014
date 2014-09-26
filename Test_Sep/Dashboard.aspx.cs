@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 
 public partial class Dashboard : System.Web.UI.Page
 {
@@ -21,10 +25,10 @@ public partial class Dashboard : System.Web.UI.Page
         packlayout.Visible = false;
         treemap.Visible = false;
         dua1Bar.Visible = false;
-        donutChart.Visible = false;
-        
-    
+        donutChart.Visible = false;       
     }
+
+      
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
         Panel1.Visible = false;

@@ -57,14 +57,6 @@
                     </tr>
                     <tr>
                         <td class="auto-style2">
-                 <asp:Label ID="Label10" class="control-label" runat="server" Text="Country"></asp:Label>
-                        </td>
-                        <td>
-                  <asp:Label ID="lblCountry" runat="server"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style2">
                  <asp:Label ID="Label6" class="control-label" runat="server" Text="Twitter Page"></asp:Label>
                         </td>
                         <td>

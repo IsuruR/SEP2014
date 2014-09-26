@@ -10,26 +10,25 @@ public partial class ViewCandidate : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Candidate candi = new Candidate();
+        Candidate candidate2 = new Candidate();
         string s = Request.QueryString["id"];
-        DataSet ds = candi.profile(s);
-        lblFullName.Text = ds.Tables["profile"].Rows[0]["contestantName"].ToString();
-        lblSex.Text = ds.Tables["profile"].Rows[0]["gender"].ToString();
-        lblAge.Text = ds.Tables["profile"].Rows[0]["age"].ToString();
-        lblAddress.Text = ds.Tables["profile"].Rows[0]["hometown"].ToString();
-        lblCountry.Text = ds.Tables["profile"].Rows[0]["country"].ToString();
-        lblTwitter.Text = ds.Tables["profile"].Rows[0]["twitterPageURL"].ToString();
-        string src = ds.Tables["profile"].Rows[0]["image"].ToString();
+        DataSet ds = candidate2.profile(s);
+        lblFullName.Text = ds.Tables["profile"].Rows[0]["Name"].ToString();
+        lblSex.Text = ds.Tables["profile"].Rows[0]["Gender"].ToString();
+        lblAge.Text = ds.Tables["profile"].Rows[0]["Age"].ToString();
+        lblAddress.Text = ds.Tables["profile"].Rows[0]["HomeTown"].ToString();
+        lblTwitter.Text = ds.Tables["profile"].Rows[0]["TwitterURL"].ToString();
+        string src = ds.Tables["profile"].Rows[0]["Image"].ToString();
 
-        if (ds.Tables["profile"].Rows[0]["teamID"].ToString().Equals("1"))
+        if (ds.Tables["profile"].Rows[0]["TeamID"].ToString().Equals("1"))
         {
             lblTeam.Text = "Team Kylie";
         }
-        else if (ds.Tables["profile"].Rows[0]["teamID"].ToString().Equals("2"))
+        else if (ds.Tables["profile"].Rows[0]["TeamID"].ToString().Equals("2"))
         {
             lblTeam.Text = "Team Ricky";
         }
-        else if (ds.Tables["profile"].Rows[0]["teamID"].ToString().Equals("3"))
+        else if (ds.Tables["profile"].Rows[0]["TeamID"].ToString().Equals("3"))
         {
             lblTeam.Text = "Team Tom";
         }

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  padding-top: 40px;
+  position: relative;
+  width: 960px;
+}
+
+button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: .5px; }
+.bullet .range.s0 { fill: #eee; }
+.bullet .range.s1 { fill: #ddd; }
+.bullet .range.s2 { fill: #ccc; }
+.bullet .range.s3 { fill: #bbb; }
+.bullet .range.s4 { fill: #999; }
+.bullet .measure.s0 { fill: teal; }
+.bullet .measure.s1 { fill: #fdd0a2; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #666; }
+
+</style>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="TeamPerformance.js"></script>
+<script>
+
+    var margin = { top: 40, right: 40, bottom: 50, left: 120 },
+        width = 960 - margin.left - margin.right,
+        height = 115 - margin.top - margin.bottom;
+
+    var chart = d3.bullet()
+        .width(width)
+        .height(height);
+
+    d3.json("TeamKyliePerformance.json", function (error, data) {
+
+        //Creating the bullet
+        var svg = d3.select("body").selectAll("svg")
+            .data(data)
+          .enter().append("svg")
+            .attr("class", "bullet")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .call(chart);
+
+        var title = svg.append("g")
+            .style("text-anchor", "end")
+            .attr("transform", "translate(-6," + height / 2 + ")");
+
+        title.append("text")
+            .attr("class", "title")
+            .text(function (d) { return d.title; });
+
+        title.append("text")
+            .attr("class", "subtitle")
+            .attr("dy", "1em")
+            .text(function (d) { return d.subtitle; });
+
+        var test = get_radio_value();
+        console.log(test);
+
+        d3.selectAll("rect").on("click", function() {
+            window.location.assign("Popularity.html"); //OnClick function of a bullet
+        });
+
+    });
+
+
+    function updateData() {
+        d3.json("TeamRickyPerformance.json", function (error, data) {
+            d3.select("body").selectAll("svg")
+            .datum(function (d, i) {
+                d.title = data.title;
+                d.subtitle = data.subtitle;
+                d.ranges = data[i].ranges;
+                d.measures = data[i].measures;
+                d.markers = data[i].markers;
+                return d;
+            })
+            .call(chart.duration(1000));
+        });
+    }
+
+
+    //radio buttons test
+
+
+    //    if (document.getElementById('0').checked) {
+    //        console.log("Team Kylie");
+    //    } else if (document.getElementById('1').checked) {
+    //        console.log("Team Ricky");
+    //    } else if (document.getElementById('1').checked) {
+    //        console.log("Team Tom");
+    //    } else if (document.getElementById('1').checked) {
+    //        console.log("Team Will");
+    //    } else {
+    //        console.log("Error");
+    //    }
+
+
+    //var rad = document.getElementById('0');
+
+    //console.log(rad);
+
+    //rad.onchange = function () {
+    //            console.log(this.value)
+    //};
+
+    function get_radio_value() {
+        var inputs = document.getElementsByName("selected");
+        console.log(inputs);
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].checked) {
+                console.log(inputs[i].value);
+                return inputs[i].value;
+            }
+        }
+    }
+
+</script>

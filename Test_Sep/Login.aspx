@@ -13,13 +13,19 @@
          <div class="container">
              <asp:Table ID="Table1" runat="server">
                  <asp:TableRow>
-                     <asp:TableCell>
-                        <img src="images/b01nnfdd.jpg" width="500" height="400" />
-                     </asp:TableCell>
+                     <asp:TableCell HorizontalAlign="Center">
+                         <asp:Label ID="Label1" runat="server" Text="Visual Analytic System" Font-Size="XX-Large" Font-Bold="true" ForeColor="#0066ff"></asp:Label>
+                         <br />
+                         <br />
+                         <img src="images/b01nnfdd.jpg" width="500" height="400" />
+                         <br /> 
+                        
+                         </asp:TableCell>
+
                      <asp:TableCell>
                          
-	                    <div class=" col-md-offset-7" style="padding-left:700px" >
-		                <div class="span12" >
+	                    <div class=" col-md-offset-7" style="padding-left:400px" >
+		                
 			            <form >
 			              <fieldset>
 			                  <legen><a style="font-size:x-large">Login</a></legen>
@@ -41,11 +47,14 @@
 			                  </div>
 			                </div>
 			                <div class="control-group">
+                                <asp:Panel ID="Panel2" runat="server" BackColor="#F6CED8" ForeColor="#DF013A" 
+                             Visible="False" Width="230px">
+                             Invalid username or password</asp:Panel>
                             <br />
 			                  <!-- Button -->
 			                  <div class="controls" >
 			                    <asp:Button id="loginbtn" onclick="Unnamed_Click"  Text="Login" runat="server"/>
-                                <a href="#">Forgot Password?</a>
+                                <a href="ForgetPwd.aspx">Forgot Password?</a>
 			                  </div>
 			                </div>
 			              </fieldset>

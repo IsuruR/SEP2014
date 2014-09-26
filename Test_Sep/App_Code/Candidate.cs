@@ -9,10 +9,10 @@ using System.Xml.Linq;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.IO;
+using System.Windows.Forms;
 
-/// <summary>
-/// Summary description for Candidate
-/// </summary>
+
 public class Candidate
 {
     SqlConnection con = null;
@@ -30,7 +30,7 @@ public class Candidate
         con = new SqlConnection(conStr);
 	}
 
-    public bool addCandidates(int candID, string name, string gender, int age, string hometown, string country, string image, string description, string fbPageUrl, string twitterPageUrl, int teamID)
+    public bool addCandidates(string name, string gender, int age, string hometown, string image, string twitterUrl, int teamID)
     {
         bool status = false;
         string conStr = ConfigurationManager.ConnectionStrings["VisualAnalyticConnectionString"].ConnectionString;
@@ -42,18 +42,15 @@ public class Candidate
 
                 con.Open();
 
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO contestant(contestantID , ContestantName , gender , age, hometown , country , image , description , fbPageURL, twitterPageURL, teamID) VALUES(@contestantID , @ContestantName , @gender , @age, @hometown , @country , @image , @description , @fbPageURL, @twitterPageURL, @teamID)", con);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO Artist(Name , Gender , Age, HomeTown , Image, TwitterURL, TeamID) VALUES(@name , @gender , @age, @hometown, @image , @twitterURL, @teamID)", con);
 
-            cmd2.Parameters.Add(new SqlParameter("@contestantID", (candID)));
-            cmd2.Parameters.Add(new SqlParameter("@ContestantName", (name)));
+            //cmd2.Parameters.Add(new SqlParameter("@artistID", (artistID)));
+            cmd2.Parameters.Add(new SqlParameter("@name", (name)));
             cmd2.Parameters.Add(new SqlParameter("@gender", (gender)));
             cmd2.Parameters.Add(new SqlParameter("@age", (age)));
             cmd2.Parameters.Add(new SqlParameter("@hometown", (hometown)));
-            cmd2.Parameters.Add(new SqlParameter("@country", (country)));
             cmd2.Parameters.Add(new SqlParameter("@image", (image)));
-            cmd2.Parameters.Add(new SqlParameter("@description", (description)));
-            cmd2.Parameters.Add(new SqlParameter("@fbPageURL", (fbPageUrl)));
-            cmd2.Parameters.Add(new SqlParameter("@twitterPageURL", (twitterPageUrl)));
+            cmd2.Parameters.Add(new SqlParameter("@twitterURL", (twitterUrl)));
             cmd2.Parameters.Add(new SqlParameter("@teamID", (teamID)));
 
 
@@ -66,20 +63,17 @@ public class Candidate
 
 
 
-        catch (NullReferenceException ex)
+        catch (Exception ex)
         {
+            MessageBox.Show(ex.Message);
             Console.WriteLine("Error: " + ex.Message);
-        }
-        finally
-        {
-
         }
         return status;
 
     }
 
 
-    public DataSet profile(string candID)
+    public DataSet profile(string artistID)
     {
         DataSet ds = new DataSet();
         string conStr = ConfigurationManager.ConnectionStrings["VisualAnalyticConnectionString"].ConnectionString;
@@ -88,7 +82,7 @@ public class Candidate
         {
             if (con.State.ToString() == "Closed")
                 con.Open();
-            string selection = "select * from contestant where contestantID='" + candID + "'";
+            string selection = "select * from Artist where ArtistID='" + artistID + "'";
             SqlCommand cmd = new SqlCommand(selection, con);
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -113,7 +107,7 @@ public class Candidate
         try
         {
             con.Open();
-            String str = "SELECT Max(contestantID)as count FROM contestant ";
+            String str = "SELECT Max(ArtistID)as count FROM Artist ";
 
             SqlCommand cmd = new SqlCommand(str, con);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -144,7 +138,7 @@ public class Candidate
         try
         {
             con.Open();
-            String str = "SELECT count(contestantID)as count FROM contestant ";
+            String str = "SELECT count(ArtistID)as count FROM Artist ";
 
             SqlCommand cmd = new SqlCommand(str, con);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -173,7 +167,7 @@ public class Candidate
         return status;
     }
 
-    public bool updateCandidate(int candID, string name, string gender, int age, string hometown, string country, string image, string description, string fbPageURL, string twitterPageURL, int teamID)
+    public bool updateCandidate(int artistID, string name, string gender, int age, string hometown, string image, string twitterURL, int teamID)
     {
         string conStr = ConfigurationManager.ConnectionStrings["VisualAnalyticConnectionString"].ConnectionString;
         con = new SqlConnection(conStr);
@@ -186,18 +180,15 @@ public class Candidate
 
                 con.Open();
 
-            SqlCommand cmd2 = new SqlCommand("UPDATE contestant SET contestantName=@name, gender=@gender, age=@age, hometown=@hometown, country=@country , image=@image, description=@description, fbPageURL=@fbPageURL, twitterPageURL=@twitterPageURL, teamID=@teamID  " + " where contestantID=@candID", con);
+            SqlCommand cmd2 = new SqlCommand("UPDATE Artist SET Name=@name, Gender=@gender, Age=@age, HomeTown=@hometown, Image=@image, TwitterURL=@twitterURL, TeamID=@teamID  " + " where ArtistID=@artistID", con);
 
-            cmd2.Parameters.Add(new SqlParameter("@candID", (candID)));
+            cmd2.Parameters.Add(new SqlParameter("@artistID", (artistID)));
             cmd2.Parameters.Add(new SqlParameter("@name", (name)));
             cmd2.Parameters.Add(new SqlParameter("@gender", (gender)));
             cmd2.Parameters.Add(new SqlParameter("@age", (age)));
             cmd2.Parameters.Add(new SqlParameter("@hometown", (hometown)));
-            cmd2.Parameters.Add(new SqlParameter("@country", (country)));
             cmd2.Parameters.Add(new SqlParameter("@image", (image)));
-            cmd2.Parameters.Add(new SqlParameter("@description", (description)));
-            cmd2.Parameters.Add(new SqlParameter("@fbPageURL", (fbPageURL)));
-            cmd2.Parameters.Add(new SqlParameter("@twitterPageURL", (twitterPageURL)));
+            cmd2.Parameters.Add(new SqlParameter("@twitterURL", (twitterURL)));
             cmd2.Parameters.Add(new SqlParameter("@teamID", (teamID)));
 
 
@@ -210,10 +201,247 @@ public class Candidate
 
 
 
-        catch (NullReferenceException ex)
+        catch (Exception ex)
         {
+            MessageBox.Show("Error2  "+ex.Message);
+
             Console.WriteLine(ex.Message);
         }
+        con.Close();
         return status;
+    }
+
+    
+
+    //Youtube Scraping
+
+    public List<string> getCandidateList()
+    {
+        List<string> myList = new List<string>();
+        string conStr = ConfigurationManager.ConnectionStrings["VisualAnalyticConnectionString"].ConnectionString;
+        con = new SqlConnection(conStr);
+       // bool status = false;
+        if (con.State.ToString() == "Closed")
+        {
+            con.Open();
+        }
+        SqlCommand newCmd1 = con.CreateCommand();
+        newCmd1.Connection = con;
+        newCmd1.CommandType = CommandType.Text;
+        newCmd1.CommandText = "select candid from knockouts";
+        newCmd1.ExecuteNonQuery();
+        SqlDataReader dr = newCmd1.ExecuteReader();
+        if (dr.HasRows)
+        {
+            string names = null;
+            while (dr.Read())
+            {
+
+                string column = dr["candid"].ToString();
+                myList.Add(column);
+            }
+
+            foreach (string c in myList) // Loop through List with foreach
+            {
+                names = names + c + "\n";
+            }
+            //MessageBox.Show(names);
+            
+                
+            dr.Close();
+        }
+        else
+        {
+            dr.Close();
+            //MessageBox.Show("Error connecting to data");
+        }
+        con.Close();
+        return myList;
+        
+
+    }
+
+
+    public bool storeYoutubeData(string name, string videoId, string title, string pubDate, int likes, int dislikes, string commentLink,int uviews)
+    {
+        bool status = false;
+        string conStr = ConfigurationManager.ConnectionStrings["VisualAnalyticConnectionString"].ConnectionString;
+        con = new SqlConnection(conStr);
+        if (con.State.ToString() == "Closed")
+        {
+            con.Open();
+        }
+
+        SqlCommand newCmd1 = con.CreateCommand();
+        newCmd1.Connection = con;
+        newCmd1.CommandType = CommandType.Text;
+        newCmd1.CommandText = "insert into youtube(name,videoId,title,pubDate,likes,dislikes,commentLink,uviews) values('" + name + "','" + videoId + "','" + title + "','" + pubDate + "', " + likes + " , " + dislikes + ",'"+commentLink+"','"+uviews+"')";
+        try
+        {
+            newCmd1.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            //MessageBox.Show(e.Message);
+        }
+        status = true;
+        con.Close();
+        return status;
+
+    }
+
+
+    public bool storeComments(string commentId, string videoId, string cand, string comment)
+    {
+        bool status = false;
+        string conStr = ConfigurationManager.ConnectionStrings["VisualAnalyticConnectionString"].ConnectionString;
+        con = new SqlConnection(conStr);
+        if (con.State.ToString() == "Closed")
+        {
+            con.Open();
+        }
+
+        SqlCommand newCmd1 = con.CreateCommand();
+        newCmd1.Connection = con;
+        newCmd1.CommandType = CommandType.Text;
+        newCmd1.CommandText = "insert into Comments(commentId,videoId,name,comment) values('" + commentId + "','" + videoId + "','" + cand + "','" + comment + "')";
+        try
+        {
+            newCmd1.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            //MessageBox.Show(e.Message);
+        }
+        con.Close();
+        status = true;
+        return status;
+    }
+
+
+    //GET DATA TO CALCULATE POPULARITIES
+
+    public List<twitterList> getFollowersList()
+    {
+        List<twitterList> fList = new List<twitterList>();
+        
+        // bool status = false;
+        if (con.State.ToString() == "Closed")
+        {
+            con.Open();
+        }
+
+        SqlCommand newCmd1 = con.CreateCommand();
+
+        newCmd1.Connection = con;
+        newCmd1.CommandType = CommandType.Text;
+        newCmd1.CommandText = "select artist, Followers,date from compareArtist";
+        newCmd1.ExecuteNonQuery();
+
+        SqlDataReader dr = newCmd1.ExecuteReader();
+
+        if (dr.HasRows)
+        {
+            while (dr.Read())
+            {
+                twitterList t = new twitterList();
+                t.followers = Convert.ToInt32(dr["Followers"]);
+                t.artist = dr["artist"].ToString();
+                t.date = dr["date"].ToString();
+
+                fList.Add(t);
+            }
+
+            dr.Close();
+        }
+        else
+        {
+            dr.Close();
+        }
+
+        con.Close();
+        return fList ;
+    }
+
+    public List<youTubeList> getYoutubeLikes()
+    {
+        List<youTubeList> likesList = new List<youTubeList>();
+
+        // bool status = false;
+        if (con.State.ToString() == "Closed")
+        {
+            con.Open();
+        }
+
+        SqlCommand newCmd1 = con.CreateCommand();
+
+        newCmd1.Connection = con;
+        newCmd1.CommandType = CommandType.Text;
+        newCmd1.CommandText = "select Likes,dislikes,date,artist from compareArtist";
+        newCmd1.ExecuteNonQuery();
+
+        SqlDataReader dr = newCmd1.ExecuteReader();
+
+        if (dr.HasRows)
+        {
+            while (dr.Read())
+            {
+                youTubeList y = new youTubeList();
+
+                y.artist = dr["artist"].ToString();
+                y.date = dr["date"].ToString();
+                y.likes = Convert.ToInt32(dr["likes"]);
+                y.dislikes = Convert.ToInt32(dr["dislikes"]);
+                likesList.Add(y);
+            }
+
+            dr.Close();
+        }
+        else
+        {
+            dr.Close();
+        }
+
+        con.Close();
+        return likesList;
+    }
+
+    public List<string> getYoutubeDislikes()
+    {
+        List<string> dislikesList = new List<string>();
+
+        // bool status = false;
+        if (con.State.ToString() == "Closed")
+        {
+            con.Open();
+        }
+
+        SqlCommand newCmd1 = con.CreateCommand();
+
+        newCmd1.Connection = con;
+        newCmd1.CommandType = CommandType.Text;
+        newCmd1.CommandText = "select Dislikes from Youtube";
+        newCmd1.ExecuteNonQuery();
+
+        SqlDataReader dr = newCmd1.ExecuteReader();
+
+        if (dr.HasRows)
+        {
+            while (dr.Read())
+            {
+
+                string column = dr["Dislikes"].ToString();
+                dislikesList.Add(column);
+            }
+
+            dr.Close();
+        }
+        else
+        {
+            dr.Close();
+        }
+
+        con.Close();
+        return dislikesList;
     }
 }

@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+ 
+body { font: 12px Arial;}
+ 
+path { 
+	stroke: steelblue;
+	stroke-width: 2;
+	fill: none;
+}
+ 
+.axis path,
+.axis line {
+	fill: none;
+	stroke: grey;
+	stroke-width: 1;
+	shape-rendering: crispEdges;
+}
+
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+ 
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+ 
+<script>
+
+    var margin = { top: 30, right: 140, bottom: 30, left: 50 },
+        width = 700 - margin.left - margin.right,
+        height = 270 - margin.top - margin.bottom;
+
+    var topic = d3.select("body").append("div").append("text")
+                        .attr("x", (width / 2))
+                        .attr("y", 0 - (margin.top / 2))
+                        .attr("text-anchor", "middle")
+                        .style("font-size", "16px")
+                        .style("text-decoration", "underline")
+                        .text("Popularity");
+
+    var parseDate = d3.time.format("%d-%b-%y").parse;
+    var formatTime = d3.time.format("%e %B");
+
+    var x = d3.time.scale().range([0, width]);
+    var y = d3.scale.linear().range([height, 0]);
+
+    var xAxis = d3.svg.axis().scale(x)
+        .orient("bottom").ticks(5);
+
+    var yAxis = d3.svg.axis().scale(y)
+        .orient("left").ticks(5);
+
+    var valueline = d3.svg.line()
+        .x(function (d) { return x(d.date); })
+        .y(function (d) { return y(d.followers); });
+
+    var valueline2 = d3.svg.line()
+        .x(function (d) { return x(d.date); })
+        .y(function (d) { return y(d.likes); });
+
+    //declaring a div tag for tooltips
+    var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    var svg = d3.select("body")
+        .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Get the data
+    d3.csv("Popularity.csv", function (error, data) {
+        data.forEach(function (d) {
+            d.date = parseDate(d.date);
+            d.followers = +d.followers;
+            d.likes = +d.likes;
+        });
+
+        // Scale the range of the data
+        x.domain(d3.extent(data, function (d) { return d.date; }));
+        y.domain([0, d3.max(data, function (d) { return Math.max(d.followers, d.likes); })]);
+
+        svg.append("path")		// Add the valueline path.
+            .attr("class", "line")
+            .attr("id", "blueLine")
+            .attr("d", valueline(data));
+
+        svg.append("path")		// Add the valueline2 path.
+            .attr("class", "line")
+            .style("stroke", "red")
+            .attr("id", "redLine")
+            .attr("d", valueline2(data));
+
+        svg.append("g")			// Add the X Axis
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+        svg.append("text")      // text label for the x axis
+            .attr("transform",
+                    "translate(" + (width / 2) + " ," +
+                    (height + margin.bottom) + ")")
+            .style("text-anchor", "middle")
+            .style("text-decoration", "bold")
+            .text("Date");
+
+        svg.append("g")			// Add the Y Axis of Blue Line
+            .attr("class", "y axis")
+            .attr("id", "blueAxis")
+            .call(yAxis);
+
+        svg.append("g")			// Add the Y Axis of Red Line
+            .attr("class", "y axis")
+            .attr("id", "redAxis")
+            .call(yAxis);
+
+        svg.append("text")      // text label for the y axis
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - (margin.left))
+            .attr("x", 0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Value");
+
+
+        //Scatter Plot Drawing for Twitter graph
+        svg.selectAll("dot")
+            .data(data)
+            .attr("id", "blueDot")
+            .enter().append("circle")
+            .attr("id", "blueDots")
+            .attr("r", 5)
+            .attr("cx", function (d) { return x(d.date); })
+            .attr("cy", function (d) { return y(d.followers); })
+            .on("mouseover", function (d) {
+                div.transition()
+                .duration(200)
+                .style("opacity", .9);
+                div.html(d.followers + "<br/> Followers")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                div.transition()
+                .duration(500)
+                .style("opacity", 0);
+            });
+
+
+        //Scatter Plot Drawing for Youtube graph
+        svg.selectAll("dot")
+            .data(data)
+            .enter().append("circle")
+            .attr("id", "redDots")
+            .attr("r", 5)
+            .attr("cx", function (d) { return x(d.date); })
+            .attr("cy", function (d) { return y(d.likes); })
+            .on("mouseover", function (d) {
+                div.transition()
+                .duration(200)
+                .style("opacity", .9);
+                div.html(d.likes + "<br/> Likes")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                div.transition()
+                .duration(500)
+                .style("opacity", 0);
+            });
+
+        //text lable for the twitter graph
+        svg.append("text")
+            .attr("transform", "translate(" + (width + 6) + "," + y(data[0].followers) + ")")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "start")
+            .style("fill", "steelblue")
+            .on("click", function () {
+                // Determine if current line is visible
+                var active = blueLine.active ? false : true,
+                  newOpacity = active ? 0 : 1;
+                // Hide or show the elements
+                d3.select("#blueLine").style("opacity", newOpacity);
+                d3.select("#blueAxis").style("opacity", newOpacity);
+                d3.select("#dot").style("opacity", newOpacity);
+                // Update whether or not the elements are active
+                blueLine.active = active;
+            })
+            .text("Twitter Followers");
+
+
+        //text lable for the youtube graph
+        svg.append("text")
+            .attr("transform", "translate(" + (width + 6) + "," + y(data[0].likes) + ")")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "start")
+            .style("fill", "red")
+            .on("click", function () {
+                // Determine if current line is visible
+                var active = redLine.active ? false : true,
+                  newOpacity = active ? 0 : 1;
+                // Hide or show the elements
+                d3.select("#redLine").style("opacity", newOpacity);
+                d3.select("#redAxis").style("opacity", newOpacity);
+                d3.select("#redDot").style("opacity", newOpacity);
+                // Update whether or not the elements are active
+                redLine.active = active;
+            })
+            .text("Youtube Likes");
+
+        console.log(data.length - 1);
+        console.log(data[data.length - 1].likes);
+        console.log(data[0].likes);
+        console.log(y(data[0].likes));
+        console.log(y(data[0].followers));
+
+
+    });
+
+
+</script>
+</body>
+

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 public partial class Candidates : System.Web.UI.Page
 {
@@ -14,7 +15,8 @@ public partial class Candidates : System.Web.UI.Page
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         GridViewRow row = GridView1.SelectedRow;
-        string user = row.Cells[1].Text.ToString();
+        string user = row.Cells[0].Text.ToString();
+        MessageBox.Show(user);
         Response.Redirect("ViewCandidate.aspx?id=" + user);
     }
 }

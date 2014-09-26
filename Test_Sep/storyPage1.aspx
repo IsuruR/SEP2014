@@ -14,7 +14,7 @@
         iframe {
             height: 600px;
             width: 100%;
-            background-color: maroon;
+            background-color: white;
         }
         pre,
         body.loaded textarea {
